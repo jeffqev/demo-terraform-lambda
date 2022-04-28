@@ -50,7 +50,7 @@ module "lambda_function_container_image" {
 resource "aws_cloudwatch_event_rule" "schedule" {
   name                = "every-minute"
   description         = "At every minute"
-  schedule_expression = "cron(0/1 * * * ? *)"
+  schedule_expression = "cron(30 8 * * ? *)"
 }
 
 
