@@ -9,12 +9,11 @@ jobs:
   cd:
     runs-on: ubuntu-latest
     env:
-        TF_WORKSPACE: stage
         WORKING_DIR: infrastructure/
-        REGION: ${{secrets.TF_VAR_REGION}}
-        ACCESS_KEY: ${{secrets.TF_VAR_ACCESS_KEY}}
-        SECRET_KEY: ${{secrets.TF_VAR_SECRET_KEY}}
-        TOKEN: ${{secrets.TF_VAR_TOKEN}}
+        TF_VAR_REGION: ${{secrets.TF_VAR_REGION}}
+        TF_VAR_ACCESS_KEY: ${{secrets.TF_VAR_ACCESS_KEY}}
+        TF_VAR_SECRET_KEY: ${{secrets.TF_VAR_SECRET_KEY}}
+        TF_VAR_TOKEN: ${{secrets.TF_VAR_TOKEN}}
 
     steps:
     - name: Checkout
