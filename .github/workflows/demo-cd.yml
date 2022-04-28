@@ -19,15 +19,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-       
-    steps:
-    - uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform 
+      uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.1.7
 
-    - run: terraform init
+    - name: Terraform init
+      run: terraform init
 
-    - id: plan
+    - name: Terraform Plan
+      id: plan
       run: terraform plan -no-color
 
     - run: echo ${{ steps.plan.outputs.stdout }}
