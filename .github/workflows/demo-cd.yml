@@ -1,0 +1,39 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    env:
+        TF_WORKSPACE: stage
+        WORKING_DIR: infrastructure/
+        REGION: ${{secrets.TF_VAR_REGION}}
+        ACCESS_KEY: ${{secrets.TF_VAR_ACCESS_KEY}}
+        SECRET_KEY: ${{secrets.TF_VAR_SECRET_KEY}}
+        TOKEN: ${{secrets.TF_VAR_TOKEN}}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.4
+    
+    - name: Terraform init
+        id: init
+        run: terraform init
+        working-directory: ${{ env.WORKING_DIR }}
+    
+    - name: Terraform validate
+        id: validate
+        run: terraform validate
+
+    - name: Terraform plan
+      id: plan
+      run: terraform plan -no-color
+      working-directory: ${{ env.WORKING_DIR }}
