@@ -19,21 +19,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    
-    - uses: hashicorp/setup-terraform@v1
+       
+    steps:
+    - uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 0.14.4
-    
-    - name: Terraform init
-      id: init
-      run: terraform init
-      working-directory: ${{ env.WORKING_DIR }}
-    
-    - name: Terraform validate
-      id: validate
-      run: terraform validate
+        terraform_version: 1.1.7
 
-    - name: Terraform plan
-      id: plan
-      run: terraform plan
-      working-directory: ${{ env.WORKING_DIR }}
+    - run: terraform init
+
+    - id: plan
+      run: terraform plan -no-color
+
+    - run: echo ${{ steps.plan.outputs.stdout }}
+    - run: echo ${{ steps.plan.outputs.stderr }}
+    - run: echo ${{ steps.plan.outputs.exitcode }}
