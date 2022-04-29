@@ -21,7 +21,7 @@ provider "aws" {
 
 
 data "aws_secretsmanager_secret" "secret" {
-  name = "birthday_bot"
+  name = var.SECRET_NAME
 }
 
 data "aws_secretsmanager_secret_version" "creds" {
@@ -39,7 +39,7 @@ module "lambda_function_container_image" {
   source = "terraform-aws-modules/lambda/aws"
 
   function_name = "demo-terraform-lambda-ecr"
-  description   = "My awesome lambda using terraform and github actions"
+  description   = "My lambda using terraform and github actions"
 
   create_package = false
 
