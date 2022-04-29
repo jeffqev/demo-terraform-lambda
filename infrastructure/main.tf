@@ -39,7 +39,7 @@ module "lambda_function_container_image" {
   source = "terraform-aws-modules/lambda/aws"
 
   function_name = "demo-terraform-lambda-ecr"
-  description   = "My awesome lambda using terraform"
+  description   = "My awesome lambda using terraform and github actions"
 
   create_package = false
 
@@ -55,7 +55,7 @@ module "lambda_function_container_image" {
 resource "aws_cloudwatch_event_rule" "schedule" {
   name                = "every-minute"
   description         = "At every minute"
-  schedule_expression = "cron(30 8 * * ? *)"
+  schedule_expression = "cron(0/1 * * * ? *)"
 }
 
 
