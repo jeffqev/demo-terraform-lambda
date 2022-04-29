@@ -5,6 +5,11 @@ terraform {
       version = "~> 4.9.0"
     }
   }
+  backend "s3" {
+    bucket = "demo-tfstate-bucket-birthday"
+    key    = "terraform/state/birthday_lambda.tfstate"
+    region = "us-east-2"
+  }
 }
 
 provider "aws" {
@@ -33,7 +38,7 @@ locals {
 module "lambda_function_container_image" {
   source = "terraform-aws-modules/lambda/aws"
 
-  function_name = "demo-terraform-lambda"
+  function_name = "demo-terraform-lambda-ecr"
   description   = "My awesome lambda using terraform"
 
   create_package = false
