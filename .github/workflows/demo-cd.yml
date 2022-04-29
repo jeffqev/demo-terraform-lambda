@@ -14,6 +14,7 @@ jobs:
       TF_VAR_ACCESS_KEY: ${{secrets.TF_VAR_ACCESS_KEY}}
       TF_VAR_SECRET_KEY: ${{secrets.TF_VAR_SECRET_KEY}}
       TF_VAR_TOKEN: ${{secrets.TF_VAR_TOKEN}}
+      TF_VAR_DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
 
     steps:
       - name: Configure AWS credentials
