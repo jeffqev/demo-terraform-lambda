@@ -5,11 +5,11 @@ terraform {
       version = "~> 4.9.0"
     }
   }
-  # backend "s3" {
-  #   bucket = "demo-tfstate-bucket-birthday"
-  #   key    = "terraform/state/birthday_lambda.tfstate"
-  #   region = "us-east-2"
-  # }
+  backend "s3" {
+    bucket = "demo-tfstate-bucket-birthday"
+    key    = "terraform/state/birthday_lambda.tfstate"
+    region = "us-east-2"
+  }
 }
 
 provider "aws" {
