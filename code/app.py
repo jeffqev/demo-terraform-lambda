@@ -8,5 +8,5 @@ def handler(event, context):
   return {
     'status_code': r.status_code,
     'name': os.getenv('NAME'),
-    'message': 'Hello World',
+    'message': 'All is working :D',
   }
