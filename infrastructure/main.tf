@@ -47,7 +47,7 @@ module "lambda_function_container_image" {
     NAME = local.secret.UTC_HOUR_OFFSET
   }
 
-  image_uri    = "873843263579.dkr.ecr.us-east-2.amazonaws.com/demo-terraform:latest"
+  image_uri    = var.DOCKER_IMAGE
   package_type = "Image"
 }
 
