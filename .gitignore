@@ -4,6 +4,7 @@ __pycache__/
 *.tfstate
 *.tfstate.*
 builds
+dependencies
 
 *.tfvars
 *.tfvars.json

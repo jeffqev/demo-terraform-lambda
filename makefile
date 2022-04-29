@@ -6,6 +6,11 @@ build-lambda:
 remove-build:
 	docker rmi $(IMAGE_NAME)
 
+remove-build-no-fail:
+	$(MAKE) remove-build || true
+
+build-and-run: remove-build-no-fail build-lambda run-lambda
+
 run-lambda:
 	docker run --rm -p 9000:8080 $(IMAGE_NAME)
 
